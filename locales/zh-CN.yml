@@ -1,6 +1,6 @@
 input:
-  placeholder: "键入内容，然后按回车保存"
+  placeholder: 键入内容，然后按回车保存
 
 button:
-  toggle_dark: "切换黑暗/明亮模式"
-  toggle_lang: "切换中文/英文"
+  toggle_dark: 切换黑暗/明亮模式
+  toggle_lang: 切换中文/英文
