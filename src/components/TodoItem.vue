@@ -49,7 +49,7 @@ const onChange = (e: Event) => {
         E
       </div>
       <div :contenteditable="isEdit" break-all @input="onChange">
-        {{ text }} {{ done }}
+        {{ text }}
       </div>
     </div>
   </div>
