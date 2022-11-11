@@ -10,8 +10,9 @@ declare global {
   const $toRef: typeof import('vue/macros')['$toRef']
   const Category: typeof import('./store/category')['Category']
   const EffectScope: typeof import('vue')['EffectScope']
-  const activeId: typeof import('./store/category')['activeId']
+  const activeOrigin: typeof import('./store/category')['activeOrigin']
   const addTodo: typeof import('./store/todo')['addTodo']
+  const allData: typeof import('./store/todo')['allData']
   const asyncComputed: typeof import('@vueuse/core')['asyncComputed']
   const autoResetRef: typeof import('@vueuse/core')['autoResetRef']
   const categories: typeof import('./store/category')['categories']
@@ -29,7 +30,7 @@ declare global {
   const createReactiveFn: typeof import('@vueuse/core')['createReactiveFn']
   const createSharedComposable: typeof import('@vueuse/core')['createSharedComposable']
   const createUnrefFn: typeof import('@vueuse/core')['createUnrefFn']
-  const currentId: typeof import('./store/todo')['currentId']
+  const currentData: typeof import('./store/todo')['currentData']
   const customRef: typeof import('vue')['customRef']
   const debouncedRef: typeof import('@vueuse/core')['debouncedRef']
   const debouncedWatch: typeof import('@vueuse/core')['debouncedWatch']
@@ -91,6 +92,7 @@ declare global {
   const resolveDirective: typeof import('vue')['resolveDirective']
   const resolveRef: typeof import('@vueuse/core')['resolveRef']
   const resolveUnref: typeof import('@vueuse/core')['resolveUnref']
+  const saveTodoState: typeof import('./store/todo')['saveTodoState']
   const shallowReactive: typeof import('vue')['shallowReactive']
   const shallowReadonly: typeof import('vue')['shallowReadonly']
   const shallowRef: typeof import('vue')['shallowRef']
@@ -104,8 +106,8 @@ declare global {
   const toReactive: typeof import('@vueuse/core')['toReactive']
   const toRef: typeof import('vue')['toRef']
   const toRefs: typeof import('vue')['toRefs']
-  const todoList: typeof import('./store/todo')['todoList']
   const toggleDark: typeof import('./composables/dark')['toggleDark']
+  const transfer: typeof import('./store/todo')['transfer']
   const triggerRef: typeof import('vue')['triggerRef']
   const tryOnBeforeMount: typeof import('@vueuse/core')['tryOnBeforeMount']
   const tryOnBeforeUnmount: typeof import('@vueuse/core')['tryOnBeforeUnmount']
@@ -298,8 +300,9 @@ declare module 'vue' {
     readonly $toRef: UnwrapRef<typeof import('vue/macros')['$toRef']>
     readonly Category: UnwrapRef<typeof import('./store/category')['Category']>
     readonly EffectScope: UnwrapRef<typeof import('vue')['EffectScope']>
-    readonly activeId: UnwrapRef<typeof import('./store/category')['activeId']>
+    readonly activeOrigin: UnwrapRef<typeof import('./store/category')['activeOrigin']>
     readonly addTodo: UnwrapRef<typeof import('./store/todo')['addTodo']>
+    readonly allData: UnwrapRef<typeof import('./store/todo')['allData']>
     readonly asyncComputed: UnwrapRef<typeof import('@vueuse/core')['asyncComputed']>
     readonly autoResetRef: UnwrapRef<typeof import('@vueuse/core')['autoResetRef']>
     readonly categories: UnwrapRef<typeof import('./store/category')['categories']>
@@ -317,7 +320,7 @@ declare module 'vue' {
     readonly createReactiveFn: UnwrapRef<typeof import('@vueuse/core')['createReactiveFn']>
     readonly createSharedComposable: UnwrapRef<typeof import('@vueuse/core')['createSharedComposable']>
     readonly createUnrefFn: UnwrapRef<typeof import('@vueuse/core')['createUnrefFn']>
-    readonly currentId: UnwrapRef<typeof import('./store/todo')['currentId']>
+    readonly currentData: UnwrapRef<typeof import('./store/todo')['currentData']>
     readonly customRef: UnwrapRef<typeof import('vue')['customRef']>
     readonly debouncedRef: UnwrapRef<typeof import('@vueuse/core')['debouncedRef']>
     readonly debouncedWatch: UnwrapRef<typeof import('@vueuse/core')['debouncedWatch']>
@@ -379,6 +382,7 @@ declare module 'vue' {
     readonly resolveDirective: UnwrapRef<typeof import('vue')['resolveDirective']>
     readonly resolveRef: UnwrapRef<typeof import('@vueuse/core')['resolveRef']>
     readonly resolveUnref: UnwrapRef<typeof import('@vueuse/core')['resolveUnref']>
+    readonly saveTodoState: UnwrapRef<typeof import('./store/todo')['saveTodoState']>
     readonly shallowReactive: UnwrapRef<typeof import('vue')['shallowReactive']>
     readonly shallowReadonly: UnwrapRef<typeof import('vue')['shallowReadonly']>
     readonly shallowRef: UnwrapRef<typeof import('vue')['shallowRef']>
@@ -392,8 +396,8 @@ declare module 'vue' {
     readonly toReactive: UnwrapRef<typeof import('@vueuse/core')['toReactive']>
     readonly toRef: UnwrapRef<typeof import('vue')['toRef']>
     readonly toRefs: UnwrapRef<typeof import('vue')['toRefs']>
-    readonly todoList: UnwrapRef<typeof import('./store/todo')['todoList']>
     readonly toggleDark: UnwrapRef<typeof import('./composables/dark')['toggleDark']>
+    readonly transfer: UnwrapRef<typeof import('./store/todo')['transfer']>
     readonly triggerRef: UnwrapRef<typeof import('vue')['triggerRef']>
     readonly tryOnBeforeMount: UnwrapRef<typeof import('@vueuse/core')['tryOnBeforeMount']>
     readonly tryOnBeforeUnmount: UnwrapRef<typeof import('@vueuse/core')['tryOnBeforeUnmount']>

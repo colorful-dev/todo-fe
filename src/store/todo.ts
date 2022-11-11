@@ -1,26 +1,38 @@
+import { Category, activeOrigin } from './category'
 export interface Todo {
-  id: number
+  id: string
   text: string
   done: boolean
+  cate: Category
 }
 
-export const currentId = ref(0)
-export const todoList = ref<Todo[]>([{
-  id: 0,
-  text: 'Hello World',
-  done: true,
-}])
+const getRandomId = () => Date.now().toString(36).slice(0, 6)
+
+export const allData = ref<Todo[]>([])
+export const currentData = computed(() => allData.value.filter(todo => todo.cate === activeOrigin.value))
 
 export const addTodo = (text: string) => {
-  currentId.value += 1
-  todoList.value.push({
-    id: currentId.value,
+  if (activeOrigin.value === Category.Done)
+    return
+  allData.value.push({
+    id: getRandomId(),
     text,
     done: false,
+    cate: activeOrigin.value,
   })
 }
 
-export const updateTodo = (text: string, id: number) => {
-  const index = todoList.value.findIndex(todo => todo.id === id)
-  todoList.value[index].text = text
+export const updateTodo = (text: string, id: string) => {
+  const index = currentData.value.findIndex(todo => todo.id === id)
+  allData.value[index].text = text
+}
+
+export const transfer = (id: string, target: Category) => {
+  const index = allData.value.findIndex(todo => todo.id === id)
+  allData.value[index].cate = target
+}
+
+export const saveTodoState = (id: string, done: boolean) => {
+  const index = allData.value.findIndex(todo => todo.id === id)
+  allData.value[index].done = done
 }

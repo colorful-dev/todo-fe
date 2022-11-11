@@ -4,6 +4,14 @@ const props = defineProps<Todo>()
 const done = ref(false)
 watch(() => props.done, (val) => {
   done.value = val
+}, { immediate: true })
+
+watch(() => done.value, (val) => {
+  if (val)
+    transfer(props.id, Category.Done)
+  else
+    transfer(props.id, Category.Todo)
+  saveTodoState(props.id, val)
 })
 
 const isEdit = ref(false)
@@ -41,7 +49,7 @@ const onChange = (e: Event) => {
         E
       </div>
       <div :contenteditable="isEdit" break-all @input="onChange">
-        {{ text }}
+        {{ text }} {{ done }}
       </div>
     </div>
   </div>
