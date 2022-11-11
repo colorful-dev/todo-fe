@@ -19,3 +19,8 @@ export const addTodo = (text: string) => {
     done: false,
   })
 }
+
+export const updateTodo = (text: string, id: number) => {
+  const index = todoList.value.findIndex(todo => todo.id === id)
+  todoList.value[index].text = text
+}

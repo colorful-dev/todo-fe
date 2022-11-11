@@ -1,11 +1,17 @@
 <script setup lang="ts">
 import type { Todo } from '../store/todo'
 const props = defineProps<Todo>()
-
 const done = ref(false)
 watch(() => props.done, (val) => {
   done.value = val
 })
+
+const isEdit = ref(false)
+
+const onChange = (e: Event) => {
+  const value = (e.target as HTMLDivElement).innerText
+  updateTodo(value, props.id)
+}
 </script>
 
 <template>
@@ -17,13 +23,42 @@ watch(() => props.done, (val) => {
       'bg-gray-500': done,
       'line-through': done,
     }"
-    @click.prevent="done = !done"
+    @click.left.prevent="done = isEdit ? done : !done"
+    @click.right.prevent="isEdit = done ? false : !isEdit"
   >
-    <Checkbox v-model:checked="done" />
-    <div group-hover-translate-x-26px transition="300">
-      {{ text }}
+    <Checkbox
+      v-model:checked="done" :class="{
+        'group-hover:display-block': !isEdit,
+        'check-box': !isEdit,
+      }"
+    />
+    <div
+      :class="{
+        'group-hover-translate-x-26px': !isEdit,
+      }" transition="300" flex justify-start items-center
+    >
+      <div v-if="isEdit" mr-10px bg-blue-600 h-18px leading-18px rounded-1 px-5px text-12px>
+        E
+      </div>
+      <div :contenteditable="isEdit" @input="onChange">
+        {{ text }}
+      </div>
     </div>
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.check-box {
+  animation: fadeIn 0.5s 1;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+</style>

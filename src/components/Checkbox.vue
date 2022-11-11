@@ -14,7 +14,7 @@ const onChange = (v: Event) => {
 <template>
   <label
     class="container"
-    display-none group-hover:display-block absolute left-20px top="50%" transform="translate-y--50%"
+    display-none absolute left-20px top="50%" transform="translate-y--50%"
     cursor-pointer text-20px select-none
   >
     <input
@@ -32,9 +32,6 @@ const onChange = (v: Event) => {
 </template>
 
 <style scoped>
-.container {
-  animation: fadeIn 0.5s 1;
-}
 .container input:checked ~ .checkmark {
  background-color: #47da99;
  animation: pop 0.5s;
