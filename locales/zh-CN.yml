@@ -4,3 +4,7 @@ input:
 button:
   toggle_dark: 切换黑暗/明亮模式
   toggle_lang: 切换中文/英文
+
+category:
+  todo: 待完成
+  done: 已完成

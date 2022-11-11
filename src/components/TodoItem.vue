@@ -16,11 +16,11 @@ const onChange = (e: Event) => {
 
 <template>
   <div
-    w-full h-40px rounded-6px
+    w-full min-h-40px rounded-6px overflow-hidden
     bg-blue-500 flex items-center pl-20px box-border group
-    cursor-pointer relative
+    cursor-pointer relative text-white
     :class="{
-      'bg-gray-500': done,
+      'bg-gray-300 text-gray-600 dark:bg-gray-500': done,
       'line-through': done,
     }"
     @click.left.prevent="done = isEdit ? done : !done"
@@ -40,7 +40,7 @@ const onChange = (e: Event) => {
       <div v-if="isEdit" mr-10px bg-blue-600 h-18px leading-18px rounded-1 px-5px text-12px>
         E
       </div>
-      <div :contenteditable="isEdit" @input="onChange">
+      <div :contenteditable="isEdit" break-all @input="onChange">
         {{ text }}
       </div>
     </div>

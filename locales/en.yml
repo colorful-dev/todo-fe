@@ -4,3 +4,7 @@ input:
 button:
   toggle_dark: Toggle dark/light mode.
   toggle_lang: Toggle Chinese/English.
+
+category:
+  todo: Todo
+  done: Done
