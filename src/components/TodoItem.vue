@@ -1,9 +1,11 @@
 <script setup lang="ts">
-defineProps<{
-
-}>()
+import type { Todo } from '../store/todo'
+const props = defineProps<Todo>()
 
 const done = ref(false)
+watch(() => props.done, (val) => {
+  done.value = val
+})
 </script>
 
 <template>
@@ -16,7 +18,7 @@ const done = ref(false)
     }"
   >
     <Checkbox v-model:checked="done" mr-10px />
-    {{}}
+    {{ text }}
   </div>
 </template>
 

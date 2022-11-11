@@ -4,7 +4,8 @@ enum InputState {
   MaxLength,
 }
 
-export const ErrStateMessage = {
+export const ErrStateMessage: Record<`${InputState}`, string> = {
+  [InputState.Valid]: '',
   [InputState.NullValue]: 'This field is required.',
   [InputState.MaxLength]: 'Maximum length is 128 characters.',
 }
@@ -29,4 +30,18 @@ export const inputState = ref<{
 export const onChange = (e: Event) => {
   const inputValue = (e.target! as HTMLInputElement).value
   input.value = inputValue
+}
+
+export const onConfirm = (e: KeyboardEvent) => {
+  if (e.code === 'Enter') {
+    const code = processValid(input.value)
+    inputState.value = {
+      state: code,
+      message: ErrStateMessage[code],
+    }
+    if (code === InputState.Valid) {
+      addTodo(input.value)
+      input.value = ''
+    }
+  }
 }

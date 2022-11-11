@@ -11,6 +11,7 @@ import { VitePWA } from 'vite-plugin-pwa'
 import VueI18n from '@intlify/vite-plugin-vue-i18n'
 import Inspect from 'vite-plugin-inspect'
 import Unocss from 'unocss/vite'
+import VueMacros from 'unplugin-vue-macros/vite'
 
 export default defineConfig({
   resolve: {
@@ -22,9 +23,13 @@ export default defineConfig({
   plugins: [
     Preview(),
 
-    Vue({
-      include: [/\.vue$/, /\.md$/],
-      reactivityTransform: true,
+    VueMacros({
+      plugins: {
+        vue: Vue({
+          include: [/\.vue$/, /\.md$/],
+          reactivityTransform: true,
+        }),
+      },
     }),
 
     // https://github.com/hannoeru/vite-plugin-pages

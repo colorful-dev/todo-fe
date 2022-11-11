@@ -9,7 +9,7 @@
     <TodoInput />
 
     <div flex="~ wrap col" gap-10px first-of-type:mt-10px>
-      <TodoItem v-for="i in todoList" :key="i.id" />
+      <TodoItem v-for="todo in todoList" :key="todo.id" :="todo" />
     </div>
   </div>
 </template>
