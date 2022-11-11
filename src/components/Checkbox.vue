@@ -1,73 +1,41 @@
 <script setup lang="ts">
+defineProps<{
+  checked: boolean
+}>()
 
+const emit = defineEmits(['update:checked'])
+
+const onChange = (v: Event) => {
+  const checked = (v.target as HTMLInputElement).checked
+  emit('update:checked', checked)
+}
 </script>
 
 <template>
-  <label class="container">
-    <input type="checkbox" checked>
-    <div class="checkmark" />
+  <label class="container" relative cursor-pointer text-20px select-none>
+    <input
+      absolute opacity-0 cursor-pointer h-0
+      type="checkbox" :checked="checked" @change="onChange"
+    >
+    <div
+      class="checkmark"
+      relative top-0 left-0 w="0.8em" h="0.8em" bg="#ccc" transition="all 0.3s"
+      rounded-5px
+      after="content-none absolute display-none left-0.42em top-0.26em w-0.3em h-0.5em
+        b-0.2em b-#fff border-t-none border-r-none"
+    />
   </label>
 </template>
 
 <style scoped>
-/* Hide the default checkbox */
-.container input {
- position: absolute;
- opacity: 0;
- cursor: pointer;
- height: 0;
- width: 0;
-}
-
-.container {
- display: block;
- position: relative;
- cursor: pointer;
- font-size: 20px;
- user-select: none;
-}
-
-/* Create a custom checkbox */
-.checkmark {
- position: relative;
- top: 0;
- left: 0;
- height: 1.2em;
- width: 1.2em;
- background-color: #ccc;
- transition: all 0.3s;
- border-radius: 5px;
-}
-
-/* When the checkbox is checked, add a blue background */
 .container input:checked ~ .checkmark {
  background-color: #47da99;
  animation: pop 0.5s;
  animation-direction: alternate;
 }
 
-/* Create the checkmark/indicator (hidden when not checked) */
-.checkmark:after {
- content: "";
- position: absolute;
- display: none;
-}
-
-/* Show the checkmark when checked */
 .container input:checked ~ .checkmark:after {
  display: block;
-}
-
-/* Style the checkmark/indicator */
-.container .checkmark:after {
- left: 0.42em;
- top: 0.26em;
- width: 0.3em;
- height: 0.5em;
- border: solid white;
- border-width: 0 0.15em 0.15em 0;
- transform: rotate(45deg);
- font-size: 22px;
 }
 
 @keyframes pop {

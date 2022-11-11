@@ -1,5 +1,4 @@
 <script setup lang="ts">
-const listLength = 10
 </script>
 
 <template>
@@ -10,7 +9,7 @@ const listLength = 10
     <TodoInput />
 
     <div flex="~ wrap col" gap-10px first-of-type:mt-10px>
-      <TodoItem v-for="i in listLength" :key="i" />
+      <TodoItem v-for="i in todoList" :key="i.id" />
     </div>
   </div>
 </template>
