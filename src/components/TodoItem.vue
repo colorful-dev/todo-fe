@@ -31,7 +31,6 @@ const onChange = (e: Event) => {
       'bg-gray-300 text-gray-600 dark:bg-gray-500': done,
       'line-through': done,
     }"
-    @click.left.prevent="done = isEdit ? done : !done"
     @click.right.prevent="isEdit = done ? false : !isEdit"
   >
     <Checkbox
@@ -39,6 +38,7 @@ const onChange = (e: Event) => {
         'group-hover:display-block': !isEdit,
         'check-box': !isEdit,
       }"
+      @click.left.prevent="done = isEdit ? done : !done"
     />
     <div
       :class="{

@@ -2,13 +2,6 @@
 defineProps<{
   checked: boolean
 }>()
-
-const emit = defineEmits(['update:checked'])
-
-const onChange = (v: Event) => {
-  const checked = (v.target as HTMLInputElement).checked
-  emit('update:checked', checked)
-}
 </script>
 
 <template>
@@ -19,7 +12,7 @@ const onChange = (v: Event) => {
   >
     <input
       absolute opacity-0 cursor-pointer h-0
-      type="checkbox" :checked="checked" @change="onChange"
+      type="checkbox" :checked="checked"
     >
     <div
       class="checkmark"
@@ -40,15 +33,6 @@ const onChange = (v: Event) => {
 
 .container input:checked ~ .checkmark:after {
  display: block;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
 }
 
 @keyframes pop {
