@@ -7,9 +7,11 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    Checkbox: typeof import('./components/Checkbox.vue')['default']
     Footer: typeof import('./components/Footer.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     TodoInput: typeof import('./components/TodoInput.vue')['default']
+    TodoItem: typeof import('./components/TodoItem.vue')['default']
   }
 }
