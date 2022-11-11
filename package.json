@@ -66,6 +66,10 @@
     ]
   },
   "eslintConfig": {
-    "extends": "@antfu"
+    "extends": "@antfu",
+    "rules": {
+      "no-console": "off",
+      "no-debugger": "off"
+    }
   }
 }
