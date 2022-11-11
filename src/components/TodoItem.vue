@@ -11,14 +11,18 @@ watch(() => props.done, (val) => {
 <template>
   <div
     w-full h-40px rounded-6px
-    bg-blue-500 flex items-center pl-20px box-border
+    bg-blue-500 flex items-center pl-20px box-border group
+    cursor-pointer relative
     :class="{
       'bg-gray-500': done,
       'line-through': done,
     }"
+    @click.prevent="done = !done"
   >
-    <Checkbox v-model:checked="done" mr-10px />
-    {{ text }}
+    <Checkbox v-model:checked="done" />
+    <div group-hover-translate-x-26px transition="300">
+      {{ text }}
+    </div>
   </div>
 </template>
 
